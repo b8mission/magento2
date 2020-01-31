@@ -1,0 +1,7 @@
+/*
+!.gitignore
+!composer.*
+!app
+app/*
+!app/code
+!app/design
