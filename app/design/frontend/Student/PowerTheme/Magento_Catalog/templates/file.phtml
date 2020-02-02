@@ -1,0 +1,13 @@
+<?php
+
+$chars = 'qwertyuiopasdfghjklzxcvbnm';
+
+$random_length = random_int(3, 10);
+$out_word = '';
+for ($i = 0; $i < $random_length; $i++) {
+    $index = random_int(0, strlen($chars) - 1);
+    $out_word .= $chars[$index];
+}
+?>
+<hr>file.phtml generated word:
+<br><?= $out_word ?>
