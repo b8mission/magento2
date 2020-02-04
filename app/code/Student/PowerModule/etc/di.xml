@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config>
+    <type name="Student\PowerModule\PowerBlock">
+        <plugin disabled="false" name="Student_PowerModule_PowerBlockAfter" sortOrder="10" type="Student\PowerModule\Plugin\PowerBlockAfter"/>
+    </type>
+</config>

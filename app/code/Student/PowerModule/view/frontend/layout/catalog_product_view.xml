@@ -9,7 +9,7 @@
 
             <referenceContainer name="content">
 
-                <block as="powerblock" class="Student\PowerModule\Block\PowerBlock" name="powerblock" template="Student_PowerModule::powerblock.phtml"/>
+                <block as="powerblock" class="Student\PowerModule\Block\PowerBlock" name="powerblock" template="Student_PowerModule::powerblock.phtml" before="product.info.main" />
 
             </referenceContainer>
 

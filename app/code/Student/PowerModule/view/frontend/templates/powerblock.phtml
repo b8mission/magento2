@@ -3,7 +3,7 @@
  * @var $block \Student\PowerModule\Block\PowerBlock
  */
 ?>
-<div>
+<div style="background-color: <?= $block->getRandomColor();?>">
     <?= $block->show() ?>
     <?= __('<br>Hello from powerblock.phtml') ?>
 </div>
