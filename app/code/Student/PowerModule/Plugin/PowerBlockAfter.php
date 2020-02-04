@@ -2,14 +2,33 @@
 
 namespace Student\PowerModule\Plugin;
 
+use Student\PowerModule\Block\PowerBlock;
+
 class PowerBlockAfter
 {
 
-    public function beforeShow(
-        Student\PowerModule\Block\PowerBlock $subject,
+    public function afterShow(
+        PowerBlock $subject,
         $result
         //$functionParam
     ) {
-        return 'aSA';
+      return $result . '<br>\'after_plugin\' <--- ';
     }
+
+    public function beforeShow(
+      PowerBlock $subject
+    )
+    {
+      $subject->text_prop =  ' ---> before_plugin' . $subject->text_prop;
+    }
+
+    public function aroundShow(PowerBlock $subject, callable $proceed)
+    {
+      $subject->text_prop .= '\'around plugin\' + ';
+
+
+      return $proceed();
+    }
+
+
 }

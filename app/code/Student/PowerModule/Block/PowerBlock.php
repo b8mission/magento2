@@ -20,13 +20,15 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
     }
 
-    /**
-     * @return string
-     */
+
+    public $text_prop = '<hr>Hello from PowerBlock.php';
+  /**
+   * @return string
+   */
     public function show()
     {
         //Your block code
-        return __('<hr>Hello from PowerBlock.php');
+        return __((string)$this->text_prop);
     }
 
     const COLORS = [
