@@ -5,5 +5,5 @@
 ?>
 <div style="background-color: <?= $block->getRandomColor();?>">
     <?= $block->show() ?>
-    <?= __('<br>[Hello from template powerblock.phtml]') ?>
+    <?= __('<br>[Hello from template powerblock.phtml]') . '<br>' . $block->showMenuItems(); ?>
 </div>
