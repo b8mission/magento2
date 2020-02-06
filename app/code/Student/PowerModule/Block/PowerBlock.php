@@ -21,7 +21,7 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
     }
 
 
-    public $text_prop = '<hr>Hello from PowerBlock.php';
+    public $text_prop = '[Hello from PowerBlock.php]';
   /**
    * @return string
    */
