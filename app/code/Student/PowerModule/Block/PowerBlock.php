@@ -5,7 +5,8 @@ namespace Student\PowerModule\Block;
 
 use Magento\Catalog\Helper\Catalog;
 use Magento\Catalog\Model\Category;
-use Magento\Catalog\Model\ResourceModel\CategoryFactory;
+use Magento\Catalog\Model\CategoryFactory;
+use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Collection;
 use Magento\TestFramework\Event\Magento;
 
@@ -17,21 +18,27 @@ class PowerBlock extends \Magento\Framework\View\Element\Template {
    *
    * @param \Magento\Framework\View\Element\Template\Context $context
    * @param array $data
-   * @param \Magento\Catalog\Model\ResourceModel\CategoryFactory $category_factory
+   * @param CategoryFactory $category_factory
+   * @param \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $collection_factory
+   * @param \Magento\Catalog\Model\CategoryRepository $category_repository
    */
   public function __construct(
     \Magento\Framework\View\Element\Template\Context $context,
     array $data = [],
-    CategoryFactory $category_factory
+    CategoryFactory $category_factory,
+    CollectionFactory $collection_factory,
+    \Magento\Catalog\Model\CategoryRepository $category_repository
   ) {
 
-    $this->category_factory = $category_factory;
-
-
+    $this->category_factory   = $category_factory;
+    $this->collection_factory = $collection_factory;
+    $this->category_repository = $category_repository;
     parent::__construct($context, $data);
   }
 
   private $category_factory;
+  private $collection_factory;
+  private $category_repository;
 
   public $text_prop = '[Hello from PowerBlock.php]';
 
@@ -46,7 +53,6 @@ class PowerBlock extends \Magento\Framework\View\Element\Template {
   public function showMenuItems() {
     $category_factory = $this->category_factory;
 
-    //$all = $category_factory->create(['include_in_menu' => TRUE]);
     $all = $category_factory->create();
     $all = $all->getCategories(2, 1);
 
@@ -59,6 +65,39 @@ class PowerBlock extends \Magento\Framework\View\Element\Template {
     return $list;
   }
 
+  public function showMenuItems2() {
+    $collection_factory = $this->collection_factory;
+
+    $all = $collection_factory->create();
+
+    $all = $all->addAttributeToFilter('include_in_menu', TRUE)
+               ->addAttributeToSelect('name')
+               ->load()
+               ->getItems();
+
+    $list = '';
+    foreach ($all as $item) {
+      $list .= $item->getData('name') . '//';
+    }
+
+    return $list;
+
+  }
+
+
+  public function getMyCustomCategory(){
+    $cat = $this->category_repository->get(41);
+
+    $prods = ($cat->getProductCollection())->load()->getItems();
+
+
+    $list = '<br> prod ids: ';
+    foreach ($prods as $item){
+      $list .= $item ->getId() . '; ';
+    }
+    return $cat->getName() . $list;
+  }
+
   const COLORS = [
     "AliceBlue",
     "AntiqueWhite",
@@ -67,7 +106,6 @@ class PowerBlock extends \Magento\Framework\View\Element\Template {
     "Azure",
     "Beige",
     "Bisque",
-    "Black",
     "BlanchedAlmond",
     "Fuchsia",
     "Gainsboro",

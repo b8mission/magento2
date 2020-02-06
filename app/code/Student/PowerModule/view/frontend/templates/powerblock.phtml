@@ -5,5 +5,12 @@
 ?>
 <div style="background-color: <?= $block->getRandomColor();?>">
     <?= $block->show() ?>
-    <?= __('<br>[Hello from template powerblock.phtml]') . '<br>' . $block->showMenuItems(); ?>
+    <?= __('<br>[Hello from template powerblock.phtml]'); ?>
+
+    <hr>
+    <?= $block->showMenuItems(); ?>
+    <hr>
+    <?= $block->showMenuItems2(); ?>
+    <hr>
+    my custom category name is: <?= $block->getMyCustomCategory(); ?>
 </div>
