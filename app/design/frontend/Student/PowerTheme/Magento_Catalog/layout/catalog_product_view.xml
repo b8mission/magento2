@@ -8,13 +8,13 @@
     <body>
 
             <referenceContainer name="product.info.stock.sku">
-                <block class="Magento\Framework\View\Element\Text" name="about_us.label" cacheable="false">
+                <block class="Magento\Framework\View\Element\Text" name="text_example" cacheable="false">
                     <arguments>
                         <argument translate="true" name="text" xsi:type="string">{in-layout hardcode text example}</argument>
                     </arguments>
                 </block>
 
-                <block class="Magento\Framework\View\Element\Template" name="test_file" template="Magento_Catalog::file.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="file_phtml" template="Magento_Catalog::file.phtml"/>
 
             </referenceContainer>
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+    <type name="Student\PowerModule\Block\PowerBlock">
+        <plugin disabled="false" name="student_powermodule_powerblockafter"  sortOrder="10" type="Student\PowerModule\Plugin\PowerBlockAfter"/>
+    </type>
+
+    <type name="Magento\Catalog\Pricing\Price\FinalPrice">
+        <plugin disabled="false" name="student_powermodule_priceplugin" sortOrder="20" type="Student\PowerModule\Plugin\PricePlugin" />
+    </type>
+</config>

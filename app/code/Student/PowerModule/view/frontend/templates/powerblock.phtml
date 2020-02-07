@@ -3,7 +3,14 @@
  * @var $block \Student\PowerModule\Block\PowerBlock
  */
 ?>
-<div>
+<div style="background-color: <?= $block->getRandomColor();?>">
     <?= $block->show() ?>
-    <?= __('<br>Hello from powerblock.phtml') ?>
+    <?= __('<br>[Hello from template powerblock.phtml]'); ?>
+
+    <hr>
+    <?= $block->showMenuItems(); ?>
+    <hr>
+    <?= $block->showMenuItems2(); ?>
+    <hr>
+    my custom category name is: <?= $block->getMyCustomCategory(); ?>
 </div>
