@@ -8,6 +8,8 @@ use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Collection;
+use Magento\CatalogGraphQl\Model\Resolver\Products\SearchCriteria\CollectionProcessor\FilterProcessor\CategoryFilter;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\TestFramework\Event\Magento;
 
 
@@ -21,23 +23,29 @@ class PowerBlock extends \Magento\Framework\View\Element\Template {
    * @param CategoryFactory $category_factory
    * @param \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $collection_factory
    * @param \Magento\Catalog\Model\CategoryRepository $category_repository
+   * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
    */
   public function __construct(
     \Magento\Framework\View\Element\Template\Context $context,
     array $data = [],
     CategoryFactory $category_factory,
     CollectionFactory $collection_factory,
-    \Magento\Catalog\Model\CategoryRepository $category_repository
+    \Magento\Catalog\Model\CategoryRepository $category_repository,
+    \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
   ) {
-
-    $this->category_factory   = $category_factory;
-    $this->collection_factory = $collection_factory;
-    $this->category_repository = $category_repository;
+    $this->product_collection_factory = $productCollectionFactory;
+    $this->category_factory           = $category_factory;
+    $this->collection_factory         = $collection_factory;
+    $this->category_repository        = $category_repository;
     parent::__construct($context, $data);
   }
 
+  private $product_collection_factory;
+
   private $category_factory;
+
   private $collection_factory;
+
   private $category_repository;
 
   public $text_prop = '[Hello from PowerBlock.php]';
@@ -85,15 +93,34 @@ class PowerBlock extends \Magento\Framework\View\Element\Template {
   }
 
 
-  public function getMyCustomCategory(){
-    $cat = $this->category_repository->get(41);
+  const HARDCODE_CAT_ID = 41;
 
-    $prods = ($cat->getProductCollection())->load()->getItems();
+  public function getMyCustomCategory() {
 
 
-    $list = '<br> prod ids: ';
-    foreach ($prods as $item){
-      $list .= $item ->getId() . '; ';
+    try {
+      $cat = $this->category_repository->get(self::HARDCODE_CAT_ID);
+    } catch (NoSuchEntityException $exception) {
+      return '[ERROR] There is no category with id ' . self::HARDCODE_CAT_ID;
+    }
+
+
+    $factory = $this->product_collection_factory->create();
+    $prods   = $factory->addAttributeToSelect('*')
+                       ->addCategoryFilter($cat)
+                       ->getItems();
+    $prods   = array_values($prods);
+
+    $list = '<br>products in category:<br>';
+    foreach ($prods as $item) {
+      $list .=
+        ' id: ' . $item->getId() .
+        '; name: ' . $item->getName() .
+        '; price: ' . strip_tags($item->getFormatedPrice()) . ';<br>';
+    }
+
+    if (count($prods) < 1) {
+      $list .= '<br>no products found';
     }
     return $cat->getName() . $list;
   }
