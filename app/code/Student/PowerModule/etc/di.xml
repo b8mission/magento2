@@ -7,4 +7,9 @@
     <type name="Magento\Catalog\Pricing\Price\FinalPrice">
         <plugin disabled="false" name="student_powermodule_priceplugin" sortOrder="20" type="Student\PowerModule\Plugin\PricePlugin" />
     </type>
+
+    <preference for="Student\PowerModule\Block\PowerBlock" type="Student\PowerModule\Preference\PowerBlockPreference" />
 </config>
+
+
+
