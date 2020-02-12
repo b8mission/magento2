@@ -1,0 +1,13 @@
+<?php
+
+try {
+    $rand = random_int(2, 20);
+} catch (Exception $exception) {
+    $rand = 3;
+}
+
+echo $rand;
+
+for ($i = 0; $i < $rand; $i++) {
+    echo '<p> Hello World!</p>';
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Student_PowerModule::greetings" title="Student_PowerModule" translate="title" module="Student_PowerModule" parent="Magento_Backend::content" sortOrder="50" dependsOnModule="Student_PowerModule" resource="Student_PowerModule::greetings"/>
+        <add id="Student_PowerModule::greetings_helloworld" title="Hello" translate="title" module="Student_PowerModule" parent="Student_PowerModule::greetings" sortOrder="10" dependsOnModule="Student_PowerModule" action="powermodule/hello" resource="Student_PowerModule::greetings"/>
+        <add id="Student_PowerModule::greetings_settings" title="About.." translate="title" module="Student_PowerModule" parent="Student_PowerModule::greetings" sortOrder="10" dependsOnModule="Student_PowerModule" action="powermodule/about" resource="Student_PowerModule::greetings"/>
+    </menu>
+</config>
