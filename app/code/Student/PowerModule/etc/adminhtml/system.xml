@@ -19,6 +19,10 @@
                     <label>Display Text</label>
                     <comment>This text will display on the frontend.</comment>
                 </field>
+                <field id="category" translate="label" type="select" sortOrder="20" showInDefault="1" showInStore="0" showInWebsite="0">
+                    <label>Category</label>
+                    <source_model>Student\PowerModule\Model\Config\Source\Category</source_model>
+                </field>
             </group>
         </section>
     </system>
