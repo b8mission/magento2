@@ -14,7 +14,7 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
 
     public function getEnabled()
     {
-        $val = $this->scopeConfig->getValue('powermodule_settings/general/enable');
+        $val = $this->scopeConfig->getValue('powermodule_settings/general/block_enable');
 
         return $val ?? false;
     }

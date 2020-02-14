@@ -163,4 +163,9 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
         return self::COLORS[$index] ?? 'N/A';
     }
 
+    public function getEnabled()
+    {
+        return $this->config->getEnabled();
+    }
+
 }

@@ -9,7 +9,7 @@ use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\DB\Ddl\Table;
 
 
-class Recurring implements InstallSchemaInterface
+class InstallSchema implements InstallSchemaInterface
 {
 
     public function install(
