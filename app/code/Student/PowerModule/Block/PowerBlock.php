@@ -14,6 +14,8 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\TestFramework\Event\Magento;
 use Student\PowerModule\Helper\Config;
 
+use Student\PowerModule\Model\DataFactory;
+
 
 class PowerBlock extends \Magento\Framework\View\Element\Template
 {
@@ -36,16 +38,19 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
       CollectionFactory $collection_factory,
       \Magento\Catalog\Model\CategoryRepository $category_repository,
       \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
-      \Student\PowerModule\Helper\Config $confing
+      \Student\PowerModule\Helper\Config $confing,
+      DataFactory $data_factory
     ) {
         $this->product_collection_factory = $productCollectionFactory;
         $this->category_factory           = $category_factory;
         $this->collection_factory         = $collection_factory;
         $this->category_repository        = $category_repository;
         $this->config                     = $confing;
-
+        $this->data_factory               = $data_factory;
         parent::__construct($context, $data);
     }
+
+    private $data_factory;
 
     private $product_collection_factory;
 
@@ -166,6 +171,19 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
     public function getEnabled()
     {
         return $this->config->getEnabled();
+    }
+
+
+    public function getDbData()
+    {
+        $df = $this->data_factory->create()->getCollection()->getData();
+
+
+        $result = '';
+        foreach ($df as $item) {
+            $result .= "<tr><td> {$item['test']} </td><td>{$item['upgrade_col']}</td></tr>";
+        }
+        return $result;
     }
 
 }

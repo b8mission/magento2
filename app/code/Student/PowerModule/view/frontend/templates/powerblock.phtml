@@ -3,7 +3,15 @@
  * @var $block \Student\PowerModule\Block\PowerBlock
  */
 
-if (!$block->getEnabled()) return;
+
+$block->getDbData();
+
+
+if (!$block->getEnabled()) {
+    return;
+}
+
+
 ?>
 <div style="background-color: <?= $block->getRandomColor(); ?>">
     <?= $block->show() ?>
@@ -15,4 +23,17 @@ if (!$block->getEnabled()) return;
     <?= $block->showMenuItems2(); ?>
     <hr>
     my custom category name is: <?= $block->getMyCustomCategory(); ?>
+
+    <hr>
+    Database:
+    <table border="2">
+        <tr>
+            <th>test</th>
+            <th>upgrade_col</th>
+        </tr>
+        <?= $block->getDbData(); ?>
+    </table>
 </div>
+
+
+
