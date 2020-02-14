@@ -3,6 +3,7 @@
  * @var $block \Student\PowerModule\Block\PowerBlock
  */
 
+if (!$block->getEnabled()) return;
 ?>
 <div style="background-color: <?= $block->getRandomColor(); ?>">
     <?= $block->show() ?>
