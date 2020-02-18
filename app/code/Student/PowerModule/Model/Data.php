@@ -6,6 +6,7 @@ use Magento\Framework\Model\AbstractModel;
 
 class Data extends AbstractModel
 {
+
     /**
      * Define resource model
      */
@@ -13,4 +14,5 @@ class Data extends AbstractModel
     {
         $this->_init('Student\PowerModule\Model\ResourceModel\Data');
     }
+
 }

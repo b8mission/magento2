@@ -6,6 +6,7 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection
 {
+
     /**
      * Define model & resource model
      */
@@ -16,4 +17,5 @@ class Collection extends AbstractCollection
           'Student\PowerModule\Model\ResourceModel\Data'
         );
     }
+
 }

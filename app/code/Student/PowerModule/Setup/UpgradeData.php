@@ -9,6 +9,8 @@ use Magento\Framework\Setup\ModuleContextInterface;
 class UpgradeData implements UpgradeDataInterface
 {
 
+    private const CHARS = 'qwertyuiopasdfghjklzxcvbnm';
+
     public function upgrade(
       ModuleDataSetupInterface $setup,
       ModuleContextInterface $context
@@ -25,12 +27,11 @@ class UpgradeData implements UpgradeDataInterface
         }
     }
 
-    private const CHARS = 'qwertyuiopasdfghjklzxcvbnm';
 
     private function getRandomValues($quant)
     {
         $chars_len = strlen(self::CHARS);
-        $res = [];
+        $res       = [];
         for ($i = 0; $i < $quant; $i++) {
 
             $res[] = [

@@ -20,6 +20,39 @@ use Student\PowerModule\Model\DataFactory;
 class PowerBlock extends \Magento\Framework\View\Element\Template
 {
 
+    private $data_factory;
+
+    private $product_collection_factory;
+
+    private $category_factory;
+
+    private $collection_factory;
+
+    private $category_repository;
+
+    protected $config;
+
+    public $text_prop = '[Hello from PowerBlock.php]';
+
+    const COLORS = [
+      "AliceBlue",
+      "AntiqueWhite",
+      "Aqua",
+      "Aquamarine",
+      "Azure",
+      "Beige",
+      "Bisque",
+      "BlanchedAlmond",
+      "Fuchsia",
+      "Gainsboro",
+      "GhostWhite",
+      "Gold",
+      "GoldenRod",
+      "LawnGreen",
+      "LemonChiffon",
+      "LightBlue",
+    ];
+
     /**
      * Constructor
      *
@@ -50,19 +83,6 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
     }
 
-    private $data_factory;
-
-    private $product_collection_factory;
-
-    private $category_factory;
-
-    private $collection_factory;
-
-    private $category_repository;
-
-    protected $config;
-
-    public $text_prop = '[Hello from PowerBlock.php]';
 
     /**
      * @return string
@@ -141,24 +161,7 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
         return $categ->getName() . $list;
     }
 
-    const COLORS = [
-      "AliceBlue",
-      "AntiqueWhite",
-      "Aqua",
-      "Aquamarine",
-      "Azure",
-      "Beige",
-      "Bisque",
-      "BlanchedAlmond",
-      "Fuchsia",
-      "Gainsboro",
-      "GhostWhite",
-      "Gold",
-      "GoldenRod",
-      "LawnGreen",
-      "LemonChiffon",
-      "LightBlue",
-    ];
+
 
     public function getRandomColor()
     {

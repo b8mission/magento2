@@ -6,6 +6,7 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Data extends AbstractDb
 {
+
     /**
      * Define main table
      */
@@ -14,4 +15,5 @@ class Data extends AbstractDb
         //$this->_init('student_powermodule_thing', 'id');
         $this->_init('student_powermodule_thing', 'test');
     }
+
 }

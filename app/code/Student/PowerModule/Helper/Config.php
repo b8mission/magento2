@@ -19,7 +19,8 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
         return $val ?? false;
     }
 
-    public function getValue($field){
+    public function getValue($field)
+    {
         return $this->scopeConfig->getValue($field);
     }
 
