@@ -3,6 +3,7 @@
     <module name="Student_PowerModule" setup_version="0.1.4">
         <sequence>
             <module name="Magento_Catalog"/>
+            <module name="Magento_Widget" />
         </sequence>
     </module>
 </config>

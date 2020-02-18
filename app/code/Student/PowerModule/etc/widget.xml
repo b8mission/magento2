@@ -1,0 +1,12 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Student\PowerModule\Block\Widget\PowerWidget" id="power_widget">
+        <label>Power Widget</label>
+        <description>Tests</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true" sort_order="10">
+                <label>Title</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
