@@ -3,10 +3,6 @@
  * @var $block \Student\PowerModule\Block\PowerBlock
  */
 
-
-$block->getDbData();
-
-
 if (!$block->getEnabled()) {
     return;
 }
@@ -22,7 +18,30 @@ if (!$block->getEnabled()) {
     <hr>
     <?= $block->showMenuItems2(); ?>
     <hr>
-    my custom category name is: <?= $block->getMyCustomCategory(); ?>
+    <?php
+    $name  = '';
+    $prods = $block->getMyCustomCategory($name);
+    ?>
+
+    my custom category name is: <?= $name ?>
+    <br>pruducts in category:
+    <br>
+    <?php
+
+    foreach ($prods as $item) {
+
+        $price = strip_tags($item->getFormatedPrice());
+
+        echo "id: {$item->getId()};
+            name: {$item->getName()};
+            price: {$price};
+            <br>";
+    }
+
+    if (count($prods) < 1) {
+        echo '<br>no products found';
+    }
+    ?>
 
     <hr>
     Database:
@@ -31,9 +50,12 @@ if (!$block->getEnabled()) {
             <th>test</th>
             <th>upgrade_col</th>
         </tr>
-        <?= $block->getDbData(); ?>
+
+        <?php $df = $block->getDbData();
+        foreach ($df as $item) {
+            echo "<tr><td> {$item['test']} </td><td>{$item['upgrade_col']}</td></tr>";
+        }
+        ?>
+
     </table>
 </div>
-
-
-

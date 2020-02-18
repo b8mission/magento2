@@ -63,16 +63,17 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
      * @param \Magento\Catalog\Model\CategoryRepository $category_repository
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
      * @param \Student\PowerModule\Helper\Config $confing
+     * @param \Student\PowerModule\Model\DataFactory $data_factory
      */
     public function __construct(
       \Magento\Framework\View\Element\Template\Context $context,
-      array $data = [],
       CategoryFactory $category_factory,
       CollectionFactory $collection_factory,
       \Magento\Catalog\Model\CategoryRepository $category_repository,
       \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
       \Student\PowerModule\Helper\Config $confing,
-      DataFactory $data_factory
+      DataFactory $data_factory,
+      array $data = []
     ) {
         $this->product_collection_factory = $productCollectionFactory;
         $this->category_factory           = $category_factory;
@@ -130,7 +131,9 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
 
     }
 
-    public function getMyCustomCategory()
+
+
+    public function getMyCustomCategory(&$category_name = '')
     {
 
         $category_id = $this->config->getSelectedCategory();
@@ -146,21 +149,10 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
                            ->addCategoryFilter($categ)
                            ->getItems();
         $prods   = array_values($prods);
+        $category_name = $categ->getName();
 
-        $list = '<br>products in category:<br>';
-        foreach ($prods as $item) {
-            $list .=
-              ' id: ' . $item->getId() .
-              '; name: ' . $item->getName() .
-              '; price: ' . strip_tags($item->getFormatedPrice()) . ';<br>';
-        }
-
-        if (count($prods) < 1) {
-            $list .= '<br>no products found';
-        }
-        return $categ->getName() . $list;
+        return $prods;
     }
-
 
 
     public function getRandomColor()
@@ -180,13 +172,7 @@ class PowerBlock extends \Magento\Framework\View\Element\Template
     public function getDbData()
     {
         $df = $this->data_factory->create()->getCollection()->getData();
-
-
-        $result = '';
-        foreach ($df as $item) {
-            $result .= "<tr><td> {$item['test']} </td><td>{$item['upgrade_col']}</td></tr>";
-        }
-        return $result;
+        return $df;
     }
 
 }
