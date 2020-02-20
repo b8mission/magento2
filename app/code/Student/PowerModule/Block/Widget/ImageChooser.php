@@ -31,6 +31,7 @@ class ImageChooser extends Template {
         $input->setId($element->getId());
         $input->setForm($element->getForm());
         $input->setClass("widget-option input-text admin__control-text");
+        $input->addCustomAttribute('readonly' ,'true');
         if ($element->getRequired()) {
             $input->addClass('required-entry');
         }
