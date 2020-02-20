@@ -1,22 +1,20 @@
 <?php
 /** \Student\PowerModule\Block\Widget\PowerWidget $block */
 ?>
-<h2 id="powerwidget-title"><?=$block->getData('title');?></h2>
-<h1>azaza</h1>
+
+<h2 id="powerwidget-title"><?= $block->getData('title'); ?></h2>
 
 
+<div class="slider" style="border-style: dashed;"
+     data-slick='{"slidesToShow": <?= (int)$block->getSlidesQuantity(); ?>, "slidesToScroll":<?= $block->getSlidesQuantity(); ?>}'>
 
-<ul class="your-class">
-    <li>1st Element</li>
-    <li>2nd Element</li>
-    <li>3rd Element</li>
-    <li>4th Element</li>
-    <li>5th Element</li>
-    <li>6th Element</li>
-    <li>7th Element</li>
-    <li>8th Element</li>
-</ul>
-
+    <?php
+    for ($i = 0; $i < 10; $i++) {
+        echo "<div><img src='{$block->getData('image')}'></div>";
+    }
+    ?>
+</div>
+<h3>PowerWidget</h3>
 
 <script>
     require([
@@ -24,13 +22,7 @@
         'slick'
     ], function ($) {
         $(document).ready(function () {
-            $(".your-class").slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 4,
-                slidesToScroll: 1
-            });
+            $(".slider").slick();
         });
     });
 </script>

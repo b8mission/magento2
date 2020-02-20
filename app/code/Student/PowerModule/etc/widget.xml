@@ -4,8 +4,20 @@
         <label>Power Widget</label>
         <description>Tests</description>
         <parameters>
-            <parameter name="title" xsi:type="text" required="false" visible="true" sort_order="10">
+            <parameter name="title" xsi:type="text" required="false" visible="true" sort_order="1">
                 <label>Title</label>
+            </parameter>
+            <parameter name="image" xsi:type="block" required="false" visible="true" sort_order="2">
+                <block class="Student\PowerModule\Block\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">pick a picture</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter xsi:type="text" visible="true" required="false" name="slides_quantity" sort_order="3">
+                <label>Quantity. 1 if empty</label>
             </parameter>
         </parameters>
     </widget>
