@@ -16,13 +16,10 @@
 </div>
 <h3>PowerWidget</h3>
 
-<script>
-    require([
-        'jquery',
-        'slick'
-    ], function ($) {
-        $(document).ready(function () {
-            $(".slider").slick();
-        });
-    });
+<script type="text/x-magento-init">
+    {
+        "*" : {
+            "slick.init":{}
+        }
+    }
 </script>
