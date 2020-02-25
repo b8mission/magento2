@@ -66,11 +66,18 @@ if (!$block->getEnabled()) {
      style="margin: 20px; margin-top:100px; text-align: center">
 
     <h3>K.O.</h3>
-    <input type="text" data-bind="value: inputText" placeholder="type here">
+    <input type="text" data-bind="textInput: inputText" placeholder="type here">
     <button data-bind="click: onclick">push</button>
     <br>
+    <!-- same data-bind as input -->
     <span data-bind="html: inputText"></span>
+    <br>
+    <!-- value given by button's method -->
     <span data-bind="html: span2Text, style:{ 'font-weight': span2Style }"></span>
+    <br>
+    <!-- value given by subscribe -->
+    <span data-bind="html: span3Text"></span>
+    <br>
 </div>
 
 <script type="text/x-magento-init">
