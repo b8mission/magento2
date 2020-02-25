@@ -5,8 +5,7 @@
 <h2 id="powerwidget-title"><?= $block->getData('title'); ?></h2>
 
 
-<div class="slider" style="border-style: dashed;"
-     data-slick='{"slidesToShow": <?= (int)$block->getSlidesQuantity(); ?>, "slidesToScroll":<?= $block->getSlidesQuantity(); ?>}'>
+<div class="slider" style="border-style: dashed;">
 
     <?php
     for ($i = 0; $i < 10; $i++) {
@@ -19,7 +18,9 @@
 <script type="text/x-magento-init">
     {
         "*" : {
-            "slick.init":{}
+            "slick.init":{
+                "slidesQuantity": <?=$block->getData('slides_quantity');?>
+            }
         }
     }
 </script>
