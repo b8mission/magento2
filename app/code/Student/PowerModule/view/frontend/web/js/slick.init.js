@@ -9,7 +9,6 @@ define([
             slidesQuantity: 1,
 
             initialize: function (config) {
-                document.cfg = config;
 
                 let quantity = config.slidesQuantity;
                 if (typeof quantity !== "number")
