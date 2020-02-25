@@ -24,4 +24,13 @@ class PowerWidget extends Template implements BlockInterface
         return $slides_quantity;
     }
 
+    public function getData($key = '', $index = null)
+    {
+        if ($key === 'image') {
+            return '/pub/media/' . parent::getData($key, $index);
+        }
+
+        return parent::getData($key,$index);
+    }
+
 }

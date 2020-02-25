@@ -1,14 +1,15 @@
 <?php
 /** \Student\PowerModule\Block\Widget\PowerWidget $block */
+
+
+$slides_quantity = $block->getData('slides_quantity')
 ?>
 
 <h2 id="powerwidget-title"><?= $block->getData('title'); ?></h2>
-
-
 <div class="slider" style="border-style: dashed;">
 
     <?php
-    for ($i = 0; $i < 10; $i++) {
+    for ($i = 0; $i < $slides_quantity * 2; $i++) {
         echo "<div><img src='{$block->getData('image')}'></div>";
     }
     ?>
@@ -19,8 +20,10 @@
     {
         "*" : {
             "slick.init":{
-                "slidesQuantity": <?=$block->getData('slides_quantity');?>
+                "slidesQuantity": <?= $slides_quantity; ?>
             }
         }
     }
+
+
 </script>

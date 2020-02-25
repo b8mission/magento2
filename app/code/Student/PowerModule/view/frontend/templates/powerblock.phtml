@@ -59,3 +59,31 @@ if (!$block->getEnabled()) {
 
     </table>
 </div>
+
+
+<!------------------------- knockout practice -------------------------------->
+<div data-bind="scope: 'scope-one'"
+     style="margin: 20px; margin-top:100px; text-align: center">
+
+    <h3>K.O.</h3>
+    <input type="text" data-bind="value: inputText" placeholder="type here">
+    <button data-bind="click: onclick">push</button>
+    <br>
+    <span data-bind="html: inputText"></span>
+    <span data-bind="html: span2Text, style:{ 'font-weight': span2Style }"></span>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app":{
+                "components": {
+                    "scope-one": {
+                        "component": "ko.usage"
+                    }
+                }
+            }
+        }
+    }
+
+</script>

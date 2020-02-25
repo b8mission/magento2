@@ -9,7 +9,8 @@
     </type>
 
     <preference for="Student\PowerModule\Block\PowerBlock" type="Student\PowerModule\Preference\PowerBlockPreference" />
+
+    <type name="Magento\Widget\Model\Widget">
+        <plugin disabled="false" name="student_powermodule_widgeturl" sortOrder="40" type="Student\PowerModule\Plugin\WidgetURL" />
+    </type>
 </config>
-
-
-
