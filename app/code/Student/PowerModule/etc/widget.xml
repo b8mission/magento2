@@ -21,4 +21,17 @@
             </parameter>
         </parameters>
     </widget>
+
+    <widget id="alsoviewed_products">
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="power" value="Student_PowerModule::widget/also_viewed_power.phtml" selected="false">
+                        <label translate="true">Power Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
 </widgets>

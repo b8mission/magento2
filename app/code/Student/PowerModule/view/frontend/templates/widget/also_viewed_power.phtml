@@ -1,0 +1,8 @@
+<div>Randoms are coming</div>
+<?php
+    if (!$this->getEnabled() || $this->getChildBlock('products')->getLoadedProductCollection()->count() > 0) {
+        return;
+    }
+?>
+
+
