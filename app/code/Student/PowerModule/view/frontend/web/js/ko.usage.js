@@ -29,12 +29,13 @@ define([
             onclick: function () {
 
                 self.span2Text(self.inputText());
-
                 self.span2IsBold = !self.span2IsBold;
 
                 if (self.span2IsBold) {
                     self.span2Style('bold');
-                } else self.span2Style('normal');
+                } else {
+                    self.span2Style('normal');
+                }
             },
 
         });
