@@ -14,7 +14,7 @@
         <plugin disabled="false" name="student_powermodule_widgeturl" sortOrder="40" type="Student\PowerModule\Plugin\WidgetURL" />
     </type>
 
-    <type name="Vovayatsyuk\Alsoviewed\Block\Widget\ListProduct">
+    <type name="Vovayatsyuk\Alsoviewed\Block\ListProduct">
         <plugin disabled="false" name="student_powermodule_listproduct" sortOrder="50" type="Student\PowerModule\Plugin\AlsoViewedListProduct"/>
     </type>
 </config>
