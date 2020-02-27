@@ -9,7 +9,7 @@ define([
             span2Text: ko.observable(''),           //span2 text-bind property. changes by onclick method
             span2IsBold: false,                                //bold_or_normal text-style indicator
             span2Style: ko.observable('normal'),    //span2 style-bind property
-            span3Text: ko.observable(''),           //span3 text-bind property. changes by a subscribe feature
+            span3Text: ko.observable(''),           //span3 text-bind property. changes by an inputSubscribe function
 
             initialize: function (config) {
                 //document.ko = this; //for debug purposes
@@ -17,10 +17,13 @@ define([
                 this._super(); //parent's constructor
                 self = this;
 
-                self.inputText.subscribe(function () {
+                self.inputText.subscribe(self.inputSubscribe);
+            },
 
-                    self.span3Text(self.inputText());
-                });
+            inputSubscribe: function() {
+                let reversed = self.inputText().split('').reverse().join(''); //reverse the string
+
+                self.span3Text(reversed);
             },
 
             onclick: function () {
