@@ -1,0 +1,37 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Student\PowerModule\Block\Widget\PowerWidget" id="power_widget">
+        <label>Power Widget</label>
+        <description>Tests</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true" sort_order="1">
+                <label>Title</label>
+            </parameter>
+            <parameter name="image" xsi:type="block" required="false" visible="true" sort_order="2">
+                <block class="Student\PowerModule\Block\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">pick a picture</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter xsi:type="text" visible="true" required="false" name="slides_quantity" sort_order="3">
+                <label>Quantity. 1 if empty</label>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <widget id="alsoviewed_products">
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="power" value="Student_PowerModule::widget/also_viewed_power.phtml" selected="false">
+                        <label translate="true">Power Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

@@ -2,8 +2,14 @@
 /**
  * @var $block \Student\PowerModule\Block\PowerBlock
  */
+
+if (!$block->getEnabled()) {
+    return;
+}
+
+
 ?>
-<div style="background-color: <?= $block->getRandomColor();?>">
+<div style="background-color: <?= $block->getRandomColor(); ?>">
     <?= $block->show() ?>
     <?= __('<br>[Hello from template powerblock.phtml]'); ?>
 
@@ -12,5 +18,79 @@
     <hr>
     <?= $block->showMenuItems2(); ?>
     <hr>
-    my custom category name is: <?= $block->getMyCustomCategory(); ?>
+    <?php
+    $name  = '';
+    $prods = $block->getMyCustomCategory($name);
+    ?>
+
+    my custom category name is: <?= $name ?>
+    <br>pruducts in category:
+    <br>
+    <?php
+
+    foreach ($prods as $item) {
+
+        $price = strip_tags($item->getFormatedPrice());
+
+        echo "id: {$item->getId()};
+            name: {$item->getName()};
+            price: {$price};
+            <br>";
+    }
+
+    if (count($prods) < 1) {
+        echo '<br>no products found';
+    }
+    ?>
+
+    <hr>
+    Database:
+    <table border="2">
+        <tr>
+            <th>test</th>
+            <th>upgrade_col</th>
+        </tr>
+
+        <?php $df = $block->getDbData();
+        foreach ($df as $item) {
+            echo "<tr><td> {$item['test']} </td><td>{$item['upgrade_col']}</td></tr>";
+        }
+        ?>
+
+    </table>
 </div>
+
+
+<!------------------------- knockout practice -------------------------------->
+<div data-bind="scope: 'scope-one'"
+     style="margin: 20px; margin-top:100px; text-align: center">
+
+    <h3>K.O.</h3>
+    <input type="text" data-bind="textInput: inputText" placeholder="type here">
+    <button data-bind="click: onclick">push</button>
+    <br>
+    <!-- same data-bind as input -->
+    <span data-bind="html: inputText"></span>
+    <br>
+    <!-- value given by button's method -->
+    <span data-bind="html: span2Text, style:{ 'font-weight': span2Style }"></span>
+    <br>
+    <!-- value given by subscribe -->
+    <span data-bind="html: span3Text"></span>
+    <br>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app":{
+                "components": {
+                    "scope-one": {
+                        "component": "ko.usage"
+                    }
+                }
+            }
+        }
+    }
+
+</script>

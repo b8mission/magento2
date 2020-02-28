@@ -4,11 +4,13 @@ namespace Student\PowerModule\Plugin;
 
 use Magento\Catalog\Pricing\Price\FinalPrice;
 
-class PricePlugin {
+class PricePlugin
+{
 
-  public function afterGetValue(FinalPrice $object, $result) {
+    public function afterGetValue(FinalPrice $object, $result)
+    {
 
-    return $result + 0.05;
-  }
+        return $result + 0.05;
+    }
 
 }
