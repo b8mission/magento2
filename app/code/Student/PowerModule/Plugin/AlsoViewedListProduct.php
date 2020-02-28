@@ -45,7 +45,14 @@ class AlsoViewedListProduct
         }
 
         //else return random entities from the same category
-        $category = $this->registry->registry('current_category');
+        if (!$category = $subject->getProduct()->getCategory()){
+            return $result;
+        }
+
+        return $this->getRandomProducts($category);
+    }
+
+    private function getRandomProducts($category){
 
         $result = $this->prod_collection_factory
             ->create()
@@ -69,6 +76,7 @@ class AlsoViewedListProduct
         }
 
         $result->addFieldToFilter('entity_id', $entities);
+
         return $result;
     }
 }

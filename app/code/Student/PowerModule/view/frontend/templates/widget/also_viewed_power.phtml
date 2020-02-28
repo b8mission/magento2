@@ -22,6 +22,7 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
 <?php if (!$_productCollection->count()) :?>
     <div class="message info empty"><div><?= $block->escapeHtml(__('We can\'t find products matching the selection.')) ?></div></div>
 <?php else :?>
+    <h5>random products from the category</h5>
     <?= $block->getToolbarHtml() ?>
     <?= $block->getAdditionalHtml() ?>
     <?php
