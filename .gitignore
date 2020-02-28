@@ -4,4 +4,6 @@
 !app
 app/*
 !app/code
+app/code/*
+!app/code/Student
 !app/design
